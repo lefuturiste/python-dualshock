@@ -42,6 +42,12 @@ ws.on('open', function open() {
                     t: 'disconnection'
                 }))
             }
+            ws.on('message', (data) => {
+                let body = JSON.parse(data)
+                if (body.t == 'led') {
+                    gamepad.setLed(body.d[0], body.d[1], body.d[2])
+                }
+            })
             return true
         } else {
             setTimeout(connect, 2000)
@@ -49,11 +55,6 @@ ws.on('open', function open() {
     }
     connect()
 });
-
-ws.on('message', function incoming(data) {
-    console.log('lel')
-    console.log(data)
-})
 
 ws.on('close', function close() {
     console.log('> disconnected');
