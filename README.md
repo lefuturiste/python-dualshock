@@ -3,7 +3,8 @@
 ## Requirements
 
 - Python 3
-- Node.js
+- Node.js & npm
+- libudev-dev (on debian)
 - Python packages
     - event_emitter
     - asyncio
@@ -11,11 +12,15 @@
 
 ## Installation
 
-`pip install event_emitter`
-`pip install asyncio`
-`pip install websockets`
+You will need to install libusb:
 
-`npm install` ~ Will install node_modules
+`apt-get install -y libudev-dev`
+
+To install pip required modules:
+
+`pip install -r requirements.txt`
+
+`npm install` ~ Will install node_modules and compile C librairies
 
 ## Usage 
 
